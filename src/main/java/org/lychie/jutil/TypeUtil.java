@@ -70,6 +70,94 @@ public class TypeUtil {
 	public static boolean isCompatible(Class<?> type) {
 		return ArrayUtil.contains(types, type);
 	}
+	
+	/**
+	 * 是否是Byte/byte类型
+	 * 
+	 * @param type
+	 *            被测试的类型
+	 * @return
+	 */
+	public static boolean isByteType(Class<?> type) {
+		return type == Byte.class || type == Byte.TYPE;
+	}
+	
+	/**
+	 * 是否是Short/short类型
+	 * 
+	 * @param type
+	 *            被测试的类型
+	 * @return
+	 */
+	public static boolean isShortType(Class<?> type) {
+		return type == Short.class || type == Short.TYPE;
+	}
+
+	/**
+	 * 是否是Integer/int类型
+	 * 
+	 * @param type
+	 *            被测试的类型
+	 * @return
+	 */
+	public static boolean isIntegerType(Class<?> type) {
+		return type == Integer.class || type == Integer.TYPE;
+	}
+
+	/**
+	 * 是否是Long/long类型
+	 * 
+	 * @param type
+	 *            被测试的类型
+	 * @return
+	 */
+	public static boolean isLongType(Class<?> type) {
+		return type == Long.class || type == Long.TYPE;
+	}
+
+	/**
+	 * 是否是Float/float类型
+	 * 
+	 * @param type
+	 *            被测试的类型
+	 * @return
+	 */
+	public static boolean isFloatType(Class<?> type) {
+		return type == Float.class || type == Float.TYPE;
+	}
+
+	/**
+	 * 是否是Double/double类型
+	 * 
+	 * @param type
+	 *            被测试的类型
+	 * @return
+	 */
+	public static boolean isDoubleType(Class<?> type) {
+		return type == Double.class || type == Double.TYPE;
+	}
+
+	/**
+	 * 是否是Boolean/boolean类型
+	 * 
+	 * @param type
+	 *            被测试的类型
+	 * @return
+	 */
+	public static boolean isBooleanType(Class<?> type) {
+		return type == Boolean.class || type == Boolean.TYPE;
+	}
+
+	/**
+	 * 是否是Character/char类型
+	 * 
+	 * @param type
+	 *            被测试的类型
+	 * @return
+	 */
+	public static boolean isCharacterType(Class<?> type) {
+		return type == Character.class || type == Character.TYPE;
+	}
 
 	/**
 	 * 获取参数的基本数据类型

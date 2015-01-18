@@ -77,7 +77,7 @@ public class Printer {
 			printOut("[");
 		}
 		while (it.hasNext()) {
-			print(it.next(), true, false);
+			print(it.next(), true, !isChild ? isNewLine : false);
 			if (it.hasNext() && isChild) {
 				printOut(", ");
 			}
