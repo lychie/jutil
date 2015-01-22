@@ -465,6 +465,38 @@ public class FileUtil {
 			}
 		}
 	}
+	
+	/**
+	 * 获取文件名称, 不包含文件扩展名
+	 * 
+	 * @param file
+	 *            文件
+	 * @return
+	 */
+	public static String getFileName(File file) {
+		String filename = file.getName();
+		int index = filename.lastIndexOf(".");
+		if (index != INDEX_NOT_FOUND) {
+			filename = filename.substring(0, index);
+		}
+		return filename.trim();
+	}
+
+	/**
+	 * 获取文件扩展名
+	 * 
+	 * @param file
+	 *            文件
+	 * @return
+	 */
+	public static String getFileExtension(File file) {
+		String filename = file.getName();
+		int index = filename.lastIndexOf(".");
+		if (index != INDEX_NOT_FOUND) {
+			return filename.substring(index + 1);
+		}
+		return null;
+	}
 
 	/**
 	 * 写出文本内容
