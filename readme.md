@@ -1,5 +1,14 @@
 ## 版本信息 ##
 
+v1.1.4
+
+1．[BUG] FileUtil 修复获取文件名和后缀名方法参数非存在的文件或目录抛出异常
+2．[ADDED] FileUtil 添加创建文件目录存在是否跳过控制
+3．[ADDED] FileUtil 添加获取与系统文件分隔符统一的路径
+4．[ADDED} ArrayUtil 添加数组列举的方法
+4．[ADDED} StringUtil
+
+
 v1.0.3
 
 1．[ADDED] FileUtil 添加获取文件名和后缀名方法
@@ -24,7 +33,7 @@ v1.0.2
   <dependency>
     <groupId>org.lychie</groupId>
     <artifactId>jutil</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.4</version>
   </dependency>
 </dependencies>
 ```
