@@ -8,9 +8,9 @@ v1.1.4
 
 3．[ADDED] FileUtil 添加获取与系统文件分隔符统一的路径
 
-4．[ADDED} ArrayUtil 添加数组列举的方法
+4．[ADDED] ArrayUtil 添加数组列举的方法
 
-5．[ADDED} StringUtil
+5．[ADDED] StringUtil
 
 
 v1.0.3
