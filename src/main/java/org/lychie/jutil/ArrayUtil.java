@@ -3,6 +3,7 @@ package org.lychie.jutil;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.lang.reflect.Array;
 
 /**
@@ -632,6 +633,17 @@ public class ArrayUtil {
 	public static int indexOf(short[] array, short element) {
 		return indexFrom(array, element);
 	}
+	
+	/**
+	 * 列举
+	 * 
+	 * @param array
+	 *            数组
+	 * @return
+	 */
+	public static <E> Enumeration<E> enumeration(E[] array) {
+		return new ArrayEnumeration<E>(array);
+	}
 
 	/**
 	 * 元素所在数组的索引
@@ -672,6 +684,34 @@ public class ArrayUtil {
 			target[i] = (E) Array.get(origin, i);
 		}
 		return Arrays.asList(target);
+	}
+	
+	/**
+	 * 数组列举
+	 * 
+	 * @author Lychie Fan
+	 */
+	private static class ArrayEnumeration<E> implements Enumeration<E> {
+
+		private E[] es;
+		private int index;
+		private int length;
+
+		private ArrayEnumeration(E[] es) {
+			this.es = es;
+			this.length = es.length;
+		}
+
+		@Override
+		public boolean hasMoreElements() {
+			return index < length;
+		}
+
+		@Override
+		public E nextElement() {
+			return es[index++];
+		}
+
 	}
 
 }

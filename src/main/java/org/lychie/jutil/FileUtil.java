@@ -351,8 +351,7 @@ public class FileUtil {
 	 * @return
 	 */
 	public static File mkdir(File dir) {
-		String empty = "";
-		return mkdir(dir, empty);
+		return mkdir(dir, false);
 	}
 
 	/**
@@ -365,12 +364,7 @@ public class FileUtil {
 	 * @return
 	 */
 	public static File mkdir(File parent, String child) {
-		File dir = new File(parent, child);
-		if (dir.exists()) {
-			throw new FileCastException(dir + " directory already exists");
-		}
-		dir.mkdirs();
-		return dir;
+		return mkdir(parent, child, false);
 	}
 
 	/**
@@ -474,12 +468,17 @@ public class FileUtil {
 	 * @return
 	 */
 	public static String getFileName(File file) {
-		String filename = file.getName();
-		int index = filename.lastIndexOf(".");
-		if (index != INDEX_NOT_FOUND) {
-			filename = filename.substring(0, index);
+		if (file.isFile()) {
+			String filename = file.getName();
+			int index = filename.lastIndexOf(".");
+			if (index != INDEX_NOT_FOUND) {
+				filename = filename.substring(0, index);
+			}
+			return filename.trim();
+		} else if (file.isDirectory()) {
+			return file.getName();
 		}
-		return filename.trim();
+		throw new FileCastException(file + " is not a file or directory");
 	}
 
 	/**
@@ -490,12 +489,74 @@ public class FileUtil {
 	 * @return
 	 */
 	public static String getFileExtension(File file) {
-		String filename = file.getName();
-		int index = filename.lastIndexOf(".");
-		if (index != INDEX_NOT_FOUND) {
-			return filename.substring(index + 1);
+		if (file.isFile()) {
+			String filename = file.getName();
+			int index = filename.lastIndexOf(".");
+			if (index != INDEX_NOT_FOUND) {
+				return filename.substring(index + 1);
+			}
+			return "";
 		}
-		return null;
+		throw new FileCastException(file + " is not a file");
+	}
+
+	/**
+	 * 创建目录
+	 * 
+	 * @param dir
+	 *            目录
+	 * @param skip
+	 *            若目录已存在, 是否跳过
+	 * @return
+	 */
+	public static File mkdir(File dir, boolean skip) {
+		String empty = "";
+		return mkdir(dir, empty, skip);
+	}
+
+	/**
+	 * 创建目录
+	 * 
+	 * @param parent
+	 *            父目录
+	 * @param child
+	 *            子目录名称
+	 * @param skip
+	 *            若目录已存在, 是否跳过
+	 * @return
+	 */
+	public static File mkdir(File parent, String child, boolean skip) {
+		File dir = new File(parent, child);
+		if (dir.exists()) {
+			if (!skip) {
+				throw new FileCastException(dir + " directory already exists");
+			}
+		} else {
+			dir.mkdirs();
+		}
+		return dir;
+	}
+	
+	/**
+	 * 获取与系统文件分隔符统一的路径
+	 * 
+	 * @param path
+	 *            源路径
+	 * @return
+	 */
+	public static String getUniformPath(String path) {
+		if (File.separator.equals("/")) {
+			int index = path.indexOf("\\");
+			if (index != INDEX_NOT_FOUND) {
+				path = path.replace("\\", File.separator);
+			}
+		} else if (File.separator.equals("\\")) {
+			int index = path.indexOf("/");
+			if (index != INDEX_NOT_FOUND) {
+				path = path.replace("/", File.separator);
+			}
+		}
+		return path;
 	}
 
 	/**
