@@ -165,26 +165,32 @@ public class StringUtil {
 	/**
 	 * 首字母大写
 	 * 
-	 * @param source
+	 * @param str
 	 *            字符串
 	 * @return
 	 */
-	public static String upperCase(String source) {
-		byte[] bytes = source.getBytes();
-		bytes[0] -= 32;
+	public static String toCapitalize(String str) {
+		byte[] bytes = str.getBytes();
+		byte e = bytes[0];
+		if(e >= 'a' && e <= 'z'){
+			bytes[0] -= 32;
+		}
 		return new String(bytes);
 	}
 
 	/**
 	 * 首字母小写
 	 * 
-	 * @param source
+	 * @param str
 	 *            字符串
 	 * @return
 	 */
-	public static String lowerCase(String source) {
-		byte[] bytes = source.getBytes();
-		bytes[0] += 32;
+	public static String toUncapitalize(String str) {
+		byte[] bytes = str.getBytes();
+		byte e = bytes[0];
+		if(e >= 'A' && e <= 'Z'){
+			bytes[0] += 32;
+		}
 		return new String(bytes);
 	}
 
