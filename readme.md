@@ -1,5 +1,11 @@
 ## 版本信息 ##
 
+v1.1.6
+
+1．[BUG] StringUtil.upperCase --> StringUtil.toCapitalize, && 修复转换BUG
+
+2．[BUG] StringUtil.lowerCase --> StringUtil.toUncapitalize, && 修复转换BUG
+
 v1.1.4
 
 1．[BUG] FileUtil 修复获取文件名和后缀名方法参数非存在的文件或目录抛出异常
@@ -37,7 +43,7 @@ v1.0.2
   <dependency>
     <groupId>org.lychie</groupId>
     <artifactId>jutil</artifactId>
-    <version>1.1.4</version>
+    <version>1.1.6</version>
   </dependency>
 </dependencies>
 ```
